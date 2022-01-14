@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Role extends Model
 {
     use HasFactory;
 
-    public function eventClasses()
+    public function users()
     {
         return $this->belongsToMany(
-            EventClass::class,
-            'teacher_event_class',
-            'teacher_id',
-            'event_class_id'
+            User::class
         );
     }
 }

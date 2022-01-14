@@ -27,4 +27,14 @@ class EventClass extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(
+            Teacher::class,
+            'teacher_event_class',
+            'event_class_id',
+            'teacher_id'
+        );
+    }
 }

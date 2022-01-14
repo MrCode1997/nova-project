@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
@@ -51,6 +52,7 @@ class EventClass extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make('Event'),
             BelongsTo::make('Shop'),
+            BelongsToMany::make('Teachers'),
             Date::make('Start Date'),
             Text::make('Start Time'),
             Text::make('End Time'),
