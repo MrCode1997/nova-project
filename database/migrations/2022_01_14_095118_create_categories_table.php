@@ -15,11 +15,13 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->unsignedBigInteger('shop_id');
             $table->integer('mage_category_id');
             $table->string('name');
             $table->string('description');
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 

@@ -15,8 +15,8 @@ class CreateEventClassesTable extends Migration
     {
         Schema::create('event_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreign('shop_id')->references('id')->on('shops');
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('event_id');
             $table->date('start_date');
             $table->time('start_time');
             $table->time('end_time');
@@ -31,6 +31,9 @@ class CreateEventClassesTable extends Migration
             $table->integer('email_reminder_interval');
             $table->string('email_reminder_template');
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 

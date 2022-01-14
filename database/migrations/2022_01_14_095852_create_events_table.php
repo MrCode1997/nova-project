@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->unsignedBigInteger('shop_id');
             $table->string('name');
             $table->text('description');
             $table->text('short_description');
@@ -25,6 +25,8 @@ class CreateEventsTable extends Migration
             $table->decimal('price');
             $table->string('legacy_sku');
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 
