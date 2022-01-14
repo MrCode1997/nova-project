@@ -68,12 +68,16 @@ class EventClass extends Resource
             Text::make('Name'),
             Textarea::make('Additional Info'),
             Text::make('SKU', 'legacy_sku'),
+
             Select::make('Status')->options([
                 '1' => 'Active',
                 '0' => 'Disabled',
-            ]),
-            Number::make('Email Reminder Interval'),
-            Text::make('Email Reminder Template'),
+            ])->displayUsingLabels()->default(function () {
+                return '1';
+            }),
+
+            Number::make('Email Reminder Interval')->hideFromIndex(true),
+            Text::make('Email Reminder Template')->hideFromIndex(true),
         ];
     }
 
