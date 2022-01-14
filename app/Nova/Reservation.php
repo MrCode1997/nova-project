@@ -37,6 +37,8 @@ class Reservation extends Resource
         'id',
     ];
 
+    public static $group = 'Sales';
+
     /**
      * Get the fields displayed by the resource.
      *

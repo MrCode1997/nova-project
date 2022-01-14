@@ -28,8 +28,10 @@ class Event extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'name'
     ];
+
+    public static $group = 'Content';
 
     /**
      * Get the fields displayed by the resource.

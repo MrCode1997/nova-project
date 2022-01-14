@@ -52,6 +52,8 @@ class Category extends Resource
         ];
     }
 
+    public static $group = 'Admin';
+
     /**
      * Get the cards available for the request.
      *

@@ -33,6 +33,8 @@ class Role extends Resource
         'id',
     ];
 
+    public static $group = 'Admin';
+
     /**
      * Get the fields displayed by the resource.
      *

@@ -40,6 +40,8 @@ class EventClass extends Resource
         'id',
     ];
 
+    public static $group = 'Content';
+
     /**
      * Get the fields displayed by the resource.
      *
