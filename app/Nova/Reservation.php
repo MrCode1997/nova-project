@@ -6,29 +6,27 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class EventClass extends Resource
+class Reservation extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\EventClass::class;
+    public static $model = \App\Models\Reservation::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -49,27 +47,28 @@ class EventClass extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('Event'),
-            BelongsTo::make('Shop'),
-            Date::make('Start Date'),
-            Text::make('Start Time'),
-            Text::make('End Time'),
-            Currency::make('Price'),
-            Boolean::make('Allow Promo'),
+            BelongsTo::make('Event Class', 'eventClass'),
+            Text::make('First Name'),
+            Text::make('Last Name'),
+            Text::make('Email'),
+            Text::make('Telephone'),
             Number::make('Seats'),
-            Select::make('Product Type')->options([
-                '0' => 'Simple',
-                '1' => 'Multi-Price',
+            Text::make('Promo Applied'),
+            Currency::make('Price'),
+            Text::make('Source'),
+            Select::make('Payment Status')->options([
+                'free' => 'Free',
+                'waiting' => 'Waiting for Payment',
+                'paid' => 'Paid',
+                'eatinerario' => 'Eatinerario',
             ]),
-            Text::make('Name'),
-            Textarea::make('Additional Info'),
-            Text::make('SKU', 'legacy_sku'),
-            Select::make('Status')->options([
-                '1' => 'Active',
-                '0' => 'Disabled',
-            ]),
-            Number::make('Email Reminder Interval'),
-            Text::make('Email Reminder Template'),
+            Text::make('Comment'),
+            Text::make('Options'),
+            Boolean::make('Gift'),
+            Text::make('Buyer First Name'),
+            Text::make('Buyer Last Name'),
+            Text::make('Buyer Message'),
+            Text::make('Email Reminder Sent')->nullable(true),
         ];
     }
 
