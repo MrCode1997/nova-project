@@ -37,3 +37,19 @@ Route::post('/events', function (Request $request) {
     $event->save();
     return $event;
 });
+
+//Route::get('/reservations', function (Request $request) {
+//
+//
+//    return \App\Models\Reservation::paginate();
+//
+////    return \App\Http\Resources\ReservationResource::collection(\App\Models\Reservation::paginate());
+//});
+
+Route::get('/reservations', [\App\Http\Controllers\ReservationController::class, 'get']);
+Route::post('/reservations', [\App\Http\Controllers\ReservationController::class, 'post']);
+
+
+Route::get('/users', function (Request $request) {
+    return \App\Models\User::paginate();
+});
